@@ -1,7 +1,7 @@
 <h1><%= @form.title %></h1>
 <p><%= @form.text %></p>
-<% if @questions.empty? %>
+<% if @form.questions.empty? %>
   <p> No Questions for this form </p>
 <% else %>
-  <%= @questions.inspect %>
+  <%= @form.questions.inspect %>
 <% end %>

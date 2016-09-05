@@ -19,7 +19,7 @@ class FormsController < ApplicationController
 
   def show
     @form = Form.find(params[:id])
-    @questions = Question.where("form_id = ?", params[:id])
+    # @questions = Question.where("form_id = ?", params[:id])
   end
 
   private
