@@ -3,7 +3,4 @@
   <%= f.text_area :question %><br />
   <%= f.check_box :_destroy %>
   <%= f.label :_destroy, "Remove Question" %>
-  <%= f.fields_for :answers do |builder| %>
-    <%= render 'answer_fields', f: builder %>
-  <% end %>
 </fieldset>

@@ -1,3 +1,7 @@
 <h1><%= @form.title %></h1>
 <p><%= @form.text %></p>
-<%= render 'questions_list', questions: @questions %>
+<% if @questions.empty? %>
+  <p> No Questions for this form </p>
+<% else %>
+  <%= @questions.inspect %>
+<% end %>

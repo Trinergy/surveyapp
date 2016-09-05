@@ -4,15 +4,13 @@ class FormsController < ApplicationController
 
   def new
     @form = Form.new
+    @form.questions.build
   end
 
   def create
     @form = Form.new(form_params)
-    @question = Question.new(question_params)
 
     if @form.save
-      @question.form_id = @form.id
-      @question.save
       redirect_to @form
     else
       render 'new'
@@ -21,16 +19,13 @@ class FormsController < ApplicationController
 
   def show
     @form = Form.find(params[:id])
-    @questions = [Question.find_by(form_id: params[:id])]
+    @questions = Question.where("form_id = ?", params[:id])
   end
 
   private
 
   def form_params
-    params.require(:form).permit(:title, :text)
+    params.require(:form).permit(:title, :text, questions_attributes: [:form_id, :question, '_destroy'])
   end
 
-  def question_params
-    params.require(:form).permit(:question)
-  end
 end

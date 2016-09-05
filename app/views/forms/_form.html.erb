@@ -10,7 +10,11 @@
     <%= builder.text_area :text %>
   </div>
 
-  <%= render 'question_fields', f: builder %>
+  <div class="questions">
+    <%= builder.fields_for :questions do |q_builder| %>
+      <%= render 'question_fields', f: q_builder %>
+    <% end %>
+  </div>
 
   <div class="action">
     <%= builder.submit %>
