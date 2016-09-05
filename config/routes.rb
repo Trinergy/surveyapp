@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'forms#home'
-  get '/add', to: 'forms#create'
+  resources :forms
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

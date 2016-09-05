@@ -1,0 +1,19 @@
+<%= form_for @form, url: forms_path do |builder| %>
+  <div class="title_field">
+    <%= builder.label :title %><br>
+    <%= builder.text_field :title %>
+  </div>
+  
+ 
+  <div class="text_field">
+    <%= builder.label :text %><br>
+    <%= builder.text_area :text %>
+  </div>
+
+  <%= render 'question_fields', f: builder %>
+
+  <div class="action">
+    <%= builder.submit %>
+  </div>
+  
+<% end %>
