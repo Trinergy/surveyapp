@@ -4,7 +4,10 @@ class FormsController < ApplicationController
 
   def new
     @form = Form.new
-    @form.questions.build
+    3.times do @form.questions.build end
+    @form.questions.each do |question|
+      question.answers.build
+    end
   end
 
   def create
@@ -19,13 +22,29 @@ class FormsController < ApplicationController
 
   def show
     @form = Form.find(params[:id])
-    # @questions = Question.where("form_id = ?", params[:id])
   end
 
   private
 
   def form_params
-    params.require(:form).permit(:title, :text, questions_attributes: [:form_id, :question, '_destroy'])
+    params.require(:form).permit(
+      :title, 
+      :text, 
+      :template,
+      questions_attributes: [
+        :form_id, 
+        :question,
+        :order, 
+        '_destroy', 
+        answers_attributes: [ 
+          :question_id, 
+          :name, 
+          :text, 
+          :answer_type, 
+          :selected, 
+          :order]
+        ]
+      )
   end
 
 end

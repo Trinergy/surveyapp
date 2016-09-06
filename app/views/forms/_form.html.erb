@@ -11,8 +11,8 @@
   </div>
 
   <div class="questions">
-    <%= builder.fields_for :questions do |q_builder| %>
-      <%= render 'question_fields', f: q_builder %>
+    <%= builder.fields_for :questions do |builder| %>
+      <%= render 'question_fields', f: builder %>
     <% end %>
   </div>
 
