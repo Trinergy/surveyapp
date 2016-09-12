@@ -29,20 +29,21 @@ class FormsController < ApplicationController
   def form_params
     params.require(:form).permit(
       :title, 
-      :text, 
+      :description, 
       :template,
       questions_attributes: [
         :form_id, 
-        :question,
+        :content,
         :order, 
         '_destroy', 
         answers_attributes: [ 
           :question_id, 
           :name, 
-          :text, 
+          :content, 
           :answer_type, 
           :selected, 
-          :order]
+          :order,
+          :correct]
         ]
       )
   end
